@@ -1,0 +1,55 @@
+<?php
+/**
+ * @var \Netzexpert\RandomReview\Block\View $block
+ */
+//$review = $block->getReview();
+$votes = $block->getVotes();
+?>
+
+<div class="custom-review">
+<?php foreach ($votes as $vote) { ?>
+
+    <?php $rating = $vote->getData('percent'); ?>
+    <div class="review-block">
+        <div class="rating-summary">
+            <div class="rating-result" title="<?= $block->escapeHtmlAttr($rating); ?>%">
+             <span style="width:<?= $block->escapeHtmlAttr($rating); ?>%">
+                 <span>
+                     <?= $block->escapeHtml($rating); ?>
+                 </span>
+             </span>
+            </div>
+        </div>
+
+        <div class="review-detalied">
+            <?php $review = $block->getReview($vote); ?>
+            <p>&laquo;<?= /* @escapeNotVerified */ $block->getTruncateReview($review->getData('detail')); ?>&raquo;</p>
+            <div>
+                <a href="<?php echo $block->getProductUrl($review); ?>" title="<?php echo __('mehr...'); ?>"><?php echo __('mehr...'); ?></a>
+            </div>
+        </div>
+    </div>
+
+<?php } ?>
+</div>
+<script>
+    require(
+        [
+            'jquery',
+            'slick',
+            'owlCarousel'
+        ], function ($) {
+            $(document).ready(function(){
+                $(".custom-review").slick({
+                    autoplay: false,
+                    autoplaySpeed: 5000
+                });
+                /*$(".custom-review").owlCarousel({
+                    items: 1,
+                    loop: true,
+                    singleItem:true
+                })*/
+            })
+        }
+    )
+</script>
