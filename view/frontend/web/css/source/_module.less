@@ -12,18 +12,20 @@
   .slick-next.slick-arrow {
     box-shadow: none;
     top: 32%;
-    &:before {
-      content: "";
-      display: inline-block;
-      height: 7px;
-      width: 4px;
-    }
   }
-  .slick-prev.slick-arrow:before {
-    background: url(/pub/media/pictures/left-arrow.png) no-repeat;
+  .slick-prev.slick-arrow {
+    .lib-icon-image(
+      @_icon-image: '../Netzexpert_RandomReview/images/left-arrow.png',
+            @_icon-image-width: 4px,
+            @_icon-image-height: 7px
+    );
   }
-  .slick-next.slick-arrow:before {
-    background: url(/pub/media/pictures/right-arrow.png) no-repeat;
+  .slick-next.slick-arrow {
+    .lib-icon-image(
+      @_icon-image: '../Netzexpert_RandomReview/images/right-arrow.png',
+      @_icon-image-width: 4px,
+      @_icon-image-height: 7px
+    );
   }
   .review-block.slick-slide {
     display: inline-flex;
@@ -42,13 +44,13 @@
     }
     .review-detalied {
       font-size: 12px;
-      a:before {
-        content: "";
-        background: url(/pub/media/pictures/arr.png) no-repeat;
-        display: inline-block;
-        margin-right: 0.5rem;
-        height: 7px;
-        width: 20px;
+      a {
+        .lib-icon-image(
+          @_icon-image: '../Netzexpert_RandomReview/images/arr.png',
+          @_icon-image-width: 20px,
+          @_icon-image-height: 7px,
+          @_icon-image-margin: 0 0.5rem 0 0
+        );
       }
     }
   }
